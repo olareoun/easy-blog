@@ -1,0 +1,2 @@
+class BadPublicNotebookUrlException < Exception
+end

@@ -1,0 +1,2 @@
+class NotebookNotFoundException < Exception
+end
