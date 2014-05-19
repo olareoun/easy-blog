@@ -12,7 +12,7 @@ class Notebook2RevealDomain
       post = Blog::Post.new
       post.entitle @note.getTitle
       post.putContent @note.getContent
-      post.putImages [@note.getMainImage]
+      post.putImages [@note.getMainImage] if @note.hasImages?
       post
   end
 

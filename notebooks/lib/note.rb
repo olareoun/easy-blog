@@ -76,6 +76,10 @@ module Notebooks
 			not_valid(@note.title) && not_valid(@note.content)
 		end
 
+		def updated
+			@note.updated
+		end
+
 		private
 
 			def getAttachment(type)

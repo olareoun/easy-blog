@@ -7,11 +7,13 @@ module Blog
     include Crafty::HTML::All
 
     def initialize notebook
-      @posts = notebook.notes.map do |note|
+      notes = notebook.notes
+      sorted = notes.sort_by { |a| - a.updated }
+      @posts = sorted.map do |note|
         post = Blog::PostThumbnail.new
         post.entitle note.getTitle
         post.putContent note.getContent
-        post.putImages [note.getMainImage]
+        post.putImages [note.getMainImage] if note.hasImages?
         post.url = "/#{notebook.owner}/#{notebook.name}/#{note.getId}"
         post
       end

@@ -27,6 +27,10 @@ module Blog
       @audio = audio
     end
 
+    def hasImage?
+      !(@images.nil? || @images.empty?) && @images.first
+    end
+
     def to_s
       description = ''
       description += @title.to_s unless @title.nil?
@@ -39,8 +43,6 @@ module Blog
       html = ''
       html += renderTitle if hasTitle
       html += renderContent if hasContent
-      # html += renderImage @images.first
-      # html += div class: ['nainonai']
       HTMLEntities.new.decode(html)
     end
 
@@ -55,7 +57,7 @@ module Blog
     def renderTitle
       if hasTitle 
         section class: ['post-header', 'hideme'] do
-          renderImage @images.first
+          renderImage
           p class: ['post-title'] do
             @title
           end
@@ -78,11 +80,13 @@ module Blog
     end
 
     def imageSrc
-      @images.first.getSrc
+      src = ""
+      src = @images.first.getSrc if hasImage?
+      src
     end
 
-    def renderImage(image)
-      img src: [image.getSrc], id: ['custom-img'] do
+    def renderImage
+      img src: [imageSrc], id: ['custom-img'] do
       end
     end
 

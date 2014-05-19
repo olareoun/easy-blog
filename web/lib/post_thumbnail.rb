@@ -58,7 +58,9 @@ module Blog
     end
 
     def renderImage(image)
-      img src: [image.getSrc], id: ['custom-img'] do
+      src = "/img/no-image.png"
+      src = image.getSrc if image
+      img src: [src], id: ['custom-img'] do
       end
     end
 
