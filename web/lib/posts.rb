@@ -9,6 +9,7 @@ module Blog
     def initialize notebook
       notes = notebook.notes
       sorted = notes.sort_by { |a| - a.updated }
+      @url = "/#{notebook.owner}/#{notebook.name}"
       @posts = sorted.map do |note|
         post = Blog::PostThumbnail.new
         post.entitle note.getTitle
@@ -24,6 +25,10 @@ module Blog
         @posts.inject(""){ |concatenation, post_thumb| concatenation + post_thumb.to_html }
       end
       HTMLEntities.new.decode(html)
+    end
+
+    def url
+      @url
     end
 
   end

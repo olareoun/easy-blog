@@ -29,6 +29,7 @@ class Web < Sinatra::Base
 
   get '/' do
     @blogName = "Ever"
+    @url = "/"
     @message = Notifier.message_for params['alert_signal']
     erb :index , :layout => :blog_layout
   end
@@ -38,6 +39,7 @@ class Web < Sinatra::Base
       @publicUrl = params['publicUrl']
       @blogName = domain.getBlogName(@publicUrl)
       @posts = domain.getNotes(@publicUrl)
+      @url = @posts.url
       erb :blogify , :layout => :blog_layout
     rescue BadArgumentException => e
       showError e.exception_key
@@ -53,6 +55,7 @@ class Web < Sinatra::Base
       @blogName = params['blogName']
       @publicUrl = public_url
       @posts = domain.getNotes(@publicUrl)
+      @url = @posts.url
       erb :blogify , :layout => :blog_layout
     rescue BadArgumentException => e
       showError e.exception_key

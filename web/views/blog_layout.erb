@@ -6,10 +6,14 @@
 <body>
   <div id="fixed-content">
     <div id="n2r-logo">
-      <img src="/img/notes2reveal.png">
+      <a href="/">
+        <img src="/img/notes2reveal.png">
+      </a>
     </div>
     <div id="blog-logo">
-      <span><%= @blogName %></span>
+      <a href="<%= @url %>">
+        <span><%= @blogName %></span>
+      </a>
     </div>
     <div id="messages-container">
       <% if @message && !@message.empty? %>

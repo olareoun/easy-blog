@@ -19,7 +19,7 @@ section.post {
 
 section.post-header {
   background-color: #656959;
-  color: #FFFFFF;
+  color: black;
   height: 100%;
   background-size: cover;
 }
@@ -55,8 +55,11 @@ section.post-content p {
 section .post-title {
   font-size: 100px;
   bottom: 25px;
-  right: 100px;
+  right: 0px;
   position: absolute;
+  text-align: right;
+  padding-right: 25px;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
 }
 
 #blog-logo {
