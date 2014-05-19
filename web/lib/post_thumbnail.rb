@@ -23,6 +23,10 @@ module Blog
       @images = images
     end
 
+    def putUpdated updated
+      @updated = Time.at(updated / 1000)
+    end
+
     def url= a_url
       @url = a_url
     end
@@ -31,6 +35,9 @@ module Blog
       html = article class: ['post-thumbnail'], "data-url" => [@url] do
         div class: ['post-image'] do
           renderImage @images.first
+          div class: ["post-update"] do
+            @updated.strftime("%v")
+          end
         end
         div class: ['post-content'] do
           renderTitle if hasTitle

@@ -15,6 +15,7 @@ module Blog
         post.entitle note.getTitle
         post.putContent note.getContent
         post.putImages [note.getMainImage] if note.hasImages?
+        post.putUpdated note.updated
         post.url = "/#{notebook.owner}/#{notebook.name}/#{note.getId}"
         post
       end

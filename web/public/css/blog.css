@@ -96,6 +96,7 @@ a:hover {
 
 #blog-logo a {
   text-decoration: none;
+  font-style: normal;
 }
 
 .articles {
@@ -123,11 +124,15 @@ a:hover {
    clear: both;
 }
 
+.articles article .post-update {
+  font-size: 15px;
+}
+
 .articles article .summary {
   font-size: 20px;
   font-style: italic;
   color: black;
-  padding-top: 5px;
+  padding-top: 15px;
 }
 
 .articles article .post-image {

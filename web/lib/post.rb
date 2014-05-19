@@ -27,6 +27,10 @@ module Blog
       @audio = audio
     end
 
+    def putUpdated updated
+      @updated = Time.at(updated / 1000)
+    end
+
     def hasImage?
       !(@images.nil? || @images.empty?) && @images.first
     end

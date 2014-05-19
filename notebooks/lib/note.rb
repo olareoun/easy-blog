@@ -31,6 +31,10 @@ module Notebooks
 			@note.title
 		end
 
+		def updated
+			@note.updated
+		end
+
 		def getContent
 			return '' if @note.content.nil?
 			content = transformEvernoteTodo(@note.content)
