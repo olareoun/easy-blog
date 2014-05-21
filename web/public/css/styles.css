@@ -27,24 +27,36 @@ footer{
   background-color: #656959;
   color: #F5F7E7;
   text-align: center;
-  vertical-align: middle;
   padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-footer p {
+footer div {
   padding: 5px;
   margin: 0;
   font-size: 35px;
+  vertical-align: middle;
 }
 
-footer p.twitter a{
+footer div span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+footer .twitter a{
   text-decoration: none;
   color: inherit;
   font-size: 50px;
 }
 
 footer img {
+  width: 75px;
+  height: 75px;
   border-radius: 150px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 25px;
+  margin-right: 25px;
 }
 
 .alert{
