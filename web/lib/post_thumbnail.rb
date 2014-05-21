@@ -5,26 +5,11 @@ module Blog
   class PostThumbnail
 
     include Crafty::HTML::All
+    include BasePost
 
     attr_accessor :title, :content
 
     def initialize 
-    end
-
-    def entitle aTitle
-      @title = aTitle
-    end
-
-    def putContent aContent
-      @content = aContent
-    end
-
-    def putImages images
-      @images = images
-    end
-
-    def putUpdated updated
-      @updated = Time.at(updated / 1000)
     end
 
     def url= a_url
@@ -69,22 +54,6 @@ module Blog
       src = image.getSrc if image
       img src: [src], id: ['custom-img'] do
       end
-    end
-
-    def hasTitle
-      !@title.nil? && !@title.empty?
-    end
-
-    def hasContent
-      !@content.nil? && !@content.empty? && !contentWithoutHtmlTags.empty?
-    end
-
-    def contentWithoutHtmlTags
-      @content.gsub(%r{</?[^>]+?>}, '')
-    end
-
-    def empty?
-      to_s.empty?
     end
 
   end
