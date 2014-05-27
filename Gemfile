@@ -6,6 +6,8 @@ gem "rake"
 gem "evernote_oauth"
 gem "crafty"
 gem "htmlentities"
+gem "sass"
+gem "haml"
 
 
 #bundle install --without test development

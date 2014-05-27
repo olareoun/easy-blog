@@ -1,0 +1,182 @@
+*
+  margin: 0
+  padding: 0
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+
+a
+  text-decoration: underline
+  font-style: italic
+  color: black
+
+#messages-container
+  background-color: #F5F7E7
+  border: 2px solid #861501
+  border-radius: 25px
+  text-align: center
+  position:fixed
+  z-index: 100  
+  top: 35%
+  left: 20%
+  width: 60%
+  color: #B77C72
+  font-size: 30px
+  padding: 10px
+  opacity: 0
+
+body
+  margin: 0px
+
+div.blog-section
+  background-color: #F5F7E7
+  color: #656959 
+  margin-top: 0
+  margin-bottom: 10px
+  -webkit-border-radius: 0px
+  border-radius: 0px
+  padding: 5px
+
+div.blog-section h1
+  margin-left: 10%
+  padding: 0px
+
+.blog-header
+  height: 250px
+  padding-top: 35px
+  width: 80%
+  margin-left: 10%
+  text-align: center
+  vertical-align: middle
+
+.blog-content
+  width: 60%
+  margin-left: 20%
+
+a:hover
+  text-decoration: none
+
+#n2r-logo
+  top: 30px
+  left: 18px
+  position: fixed
+  background-color: black
+  padding: 5px
+  border-radius: 50px
+
+#n2r-logo img
+  width: 80px
+  height: 80px
+
+#blog-logo
+  opacity: 0
+  top: 30px
+  right: 18px
+  position: fixed
+  background-color: #861501
+  padding: 10px
+  border-radius: 50px
+
+#blog-logo span
+  color: #F5F7E7
+  font-size: 20px
+
+#blog-logo a
+  text-decoration: none
+  font-style: normal
+
+.articles
+  list-style-type: none
+  margin: 0
+  padding: 0 
+
+.articles article
+  text-align: center
+  vertical-align: middle
+  background-color: white
+  font-size: 35px
+  font-weight: bold
+  color: #656959
+  border: 1px solid  #656959 
+  margin: 5px 10px
+  padding: 10px
+  overflow: hidden
+
+.articles article .post-thumbnail:after
+  content: ""
+  display: table
+  clear: both
+
+.articles article .post-update
+  font-size: 15px
+
+.articles article .summary
+  font-size: 20px
+  font-style: italic
+  color: black
+  padding-top: 15px
+
+.articles article .post-image
+  float: left
+  width: 20%
+  height: 100%
+  vertical-align: middle
+
+.articles article img
+  width: 150px
+  height: 150px
+  border-radius: 150px
+  -webkit-border-radius: 150px
+  -moz-border-radius: 150px
+  -moz-transition: all 1s ease
+  -webkit-transition: all 1s ease
+  -o-transition: all 1s ease
+  transition: all 1s ease
+
+.articles article img:hover
+  -moz-transform: rotate(360deg)
+  -webkit-transform: rotate(360deg)
+  -o-transform: rotate(360deg)
+  transform: rotate(360deg)
+
+.articles article img.read
+  margin-top: 5px
+  width: 35px
+  height: 35px
+  opacity: 0.5
+
+.articles article img.read:hover
+  opacity: 0.8
+
+.articles article .post-content
+  float: left
+  width: 75%
+  padding: 15px
+
+.articles article .post-content h1
+  margin: 0px
+  display: block
+  border-bottom: 1px solid black
+
+.articles article a
+  color: #656959
+
+.hideme
+
+
+@media all and (max-width: 960px)
+  .articles article .post-image
+    width: 100%
+    float: none
+  .articles article .post-content
+    width: 100%
+    float: none
+    
+
+@media all and (max-width: 560px)
+  #n2r-logo img
+    width: 40px
+    height: 40px
+  #blog-logo
+    width: 40px
+    height: 40px

@@ -1,0 +1,4 @@
+- if @post.hasImage?
+  %img{ :src => "#{@post.imageSrc}",  :id => "blog-logo" }
+%section.post
+  =@post.to_html
