@@ -23,7 +23,7 @@ img.logo{
 	font-size: 120px;
 }
 
-footer{
+/*footer{
   background-color: #656959;
   color: #F5F7E7;
   text-align: center;
@@ -58,7 +58,7 @@ footer img {
   margin-left: 25px;
   margin-right: 25px;
 }
-
+*/
 .alert{
 	background-color: orange;
 	color:#F5F7E7 ;

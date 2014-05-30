@@ -1,12 +1,14 @@
 require 'sinatra/base'
 require 'haml'
 require 'sass'
+require 'json'
 
 require_relative 'notebook_2_reveal_domain'
 require_relative 'lib/notifier'
 require_relative 'lib/posts'
 require_relative 'lib/post'
 require_relative 'lib/post_thumbnail'
+require_relative 'lib/blogs_cache'
 require_relative '../evernote/lib/bad_argument_exception'
 require_relative '../evernote/lib/bad_public_notebook_url_exception'
 
@@ -15,6 +17,8 @@ class Web < Sinatra::Base
   set :static, true
 
   domain = Notebook2RevealDomain.new
+
+  blogs_cache = BlogsCache.new
 
   get '/index.html' do
     haml :index , :layout => :blog_layout
@@ -31,7 +35,7 @@ class Web < Sinatra::Base
     begin
       @publicUrl = params['publicUrl']
       @blogName = domain.getBlogName(@publicUrl)
-      @posts = domain.getNotes(@publicUrl)
+      @posts = domain.get_blog(@publicUrl)
       @url = @posts.url
       haml :blogify , :layout => :blog_layout
     rescue BadArgumentException => e
@@ -47,9 +51,36 @@ class Web < Sinatra::Base
     begin
       @blogName = params['blogName']
       @publicUrl = public_url
-      @posts = domain.getNotes(@publicUrl)
-      @url = @posts.url
-      haml :blogify , :layout => :blog_layout
+      haml :blog , :layout => :blog_layout
+    rescue BadArgumentException => e
+      showError e.exception_key
+    rescue BadPublicNotebookUrlException => e
+      showError 'no.evernote.url'
+    rescue NotebookNotFoundException => e
+      showError 'non.existing.notebook'
+    end
+  end
+
+  get '/:owner/:blogName/json', :provides => :json do
+    begin
+      @blogName = params['blogName']
+      @publicUrl = public_url
+      posts_cache = blogs_cache.get public_url
+      if posts_cache.nil?
+        notebook = domain.get_notebook(@publicUrl)
+        posts_cache = notebook.getNotes.map do |post|
+          {
+            :title => post.getTitle,
+            :content => post.getContent,
+            :updated => Time.at(post.updated / 1000).strftime("%v"),
+            :image => post.getMainImage.getSrc,
+            :url => "/#{notebook.owner}/#{notebook.name}/#{post.getId}",
+            :id => post.getId
+          }
+        end
+        blogs_cache.add(public_url, posts_cache)
+      end
+      posts_cache.to_json
     rescue BadArgumentException => e
       showError e.exception_key
     rescue BadPublicNotebookUrlException => e

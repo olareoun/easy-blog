@@ -3,23 +3,23 @@
   %head
     %title EverBlog
     %link{:type => "text/css", :rel => "stylesheet", :href => "http://fonts.googleapis.com/css?family=Quicksand"}
-    %link{:type => "text/css", :rel => "stylesheet", :href => "css/blog.css"}
-    %link{:type => "text/css", :rel => "stylesheet", :href => "css/styles.css"}
+    %link{:type => "text/css", :rel => "stylesheet", :href => "/css/blog.css"}
+    %link{:type => "text/css", :rel => "stylesheet", :href => "/css/styles.css"}
+    %link{:type => "text/css", :rel => "stylesheet", :href => "/css/post.css"}
   %body
   %div#fixed-content
     %div#n2r-logo
       %a{:href => "/"}
         %img{:src => "/img/notes2reveal.png"}
     %div#blog-logo
-      %a{:href => "#{@url}" }
-        %span
-          =@blogName
+      %a{:href => "#"}
+        =@blogName
     %div#messages-container
       - if @message && !@message.empty?
         %p#message 
           =@message
       %a{:href => "#", :id => "message-close"} Close
-  %div#content
+  %div#content.enfrentado
     %div.blog-header.hideme
       %h1
         %span.notes 

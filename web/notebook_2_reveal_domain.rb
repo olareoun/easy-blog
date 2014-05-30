@@ -2,9 +2,13 @@ require_relative '../notebooks/lib/notebooks_domain'
 
 class Notebook2RevealDomain
 
-  def getNotes(url, sortedIds = nil)
+  def get_blog(url, sortedIds = nil)
     notebook = Notebooks::NotebooksDomain.get(url, sortedIds)
     Blog::Posts.new notebook
+  end
+
+  def get_notebook(url, sortedIds = nil)
+    Notebooks::NotebooksDomain.get(url, sortedIds)
   end
 
   def getNote(url, noteId)

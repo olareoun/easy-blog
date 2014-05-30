@@ -1,5 +1,30 @@
-$(function() {
+var APP = {};
 
+$(function() {
+  common_init();
+  if ($(".blog-content") && $(".blog-content").length) initialize_blog();
+});
+
+var initialize_blog = function() {
+  APP.articles = new APP.widgets.Articles();
+  APP.article_pages = new APP.widgets.ArticlePages();
+
+  APP.services.get_articles(draw_articles);
+  $('#blog-logo').on("click", APP.articles.open);
+};
+
+var draw_articles = function(data){
+  data.forEach(function(post){
+    var article = new APP.widgets.ArticleThumbnail(post);
+
+    var article_opening = new APP.transitions.ArticleOpening(APP.article_pages, APP.articles);
+    article.on_click(article_opening.run);
+
+    APP.articles.add_article(article);
+  });
+};
+
+var common_init = function(){
   $("#messages-container").hide();
   $("#message-close").on("click", function(){
     $("#messages-container").fadeTo(100, 0, function(){
@@ -15,26 +40,5 @@ $(function() {
     });
   }
 
-  $(window).scroll( function(){
-  
-      $('.hideme').each( function(i){
-          
-          var bottom_of_object = $(this).position().top + $(this).outerHeight();
-          var top_of_window = $(window).scrollTop();
+};
 
-          if( (top_of_window > bottom_of_object) && $("#blog-logo").css("opacity") == 0 ){
-              $("#blog-logo").fadeTo("fast", 1, function(){
-
-              });
-          }
-          
-          if( (top_of_window <= bottom_of_object) && $("#blog-logo").css("opacity") == 1 ){
-              $("#blog-logo").fadeTo("fast", 0, function(){
-
-              });
-          }
-          
-      }); 
-  
-  });
-});
