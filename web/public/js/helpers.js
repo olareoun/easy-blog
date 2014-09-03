@@ -20,11 +20,29 @@
     );
   };
 
+  ns.helpers.reset_logos = function(){
+    $("#blog-logo").css(
+      {
+        "background-color": "black"
+      }
+    );
+    $("#n2r-logo").css(
+      {
+        "background-color": "black"
+      }
+    );
+    $("#blog-logo a").css(
+      {
+        "color": "white"
+      }
+    );
+  };
+
   ns.helpers.calculate_colors = function(image){
-    // var rgb = new ColorThief().getColor(image) || [255, 255, 255];
-    // var complimentary = $c.complement(rgb).a || [0, 0, 0];
-    var rgb = [255, 255, 255];
-    var complimentary = [0, 0, 0];
+    var rgb = new ColorThief().getColor(image) || [255, 255, 255];
+    var complimentary = $c.complement(rgb).a || [0, 0, 0];
+    // var rgb = [255, 255, 255];
+    // var complimentary = [0, 0, 0];
     return {rgb: rgb_format(rgb), compl: rgb_format(complimentary)};
   };
 

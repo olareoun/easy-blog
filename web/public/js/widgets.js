@@ -37,6 +37,7 @@
 
     var _close = function(article_id, callback){
         var article = _pages[article_id];
+        APP.helpers.reset_logos();
         article.element.css({ "height": "100%" });
         article.element.animate(
             { height: 0, width: 0 },
@@ -138,12 +139,15 @@
     post_summary.html(post.content.substring(0, 250));
     post_content.append(post_summary);
 
+    var post_actions = $('<div>');
+    post_actions.addClass('post-actions');
+
     var post_url = $('<a>');
-    var eye = $('<img>');
-    eye.attr("src", '/img/021.png');
-    eye.addClass('read');
-    post_url.append(eye);
-    post_content.append(post_url);
+    post_url.addClass('read-btn');
+    post_url.append("Read");
+
+    post_actions.append(post_url);
+    post_content.append(post_actions);
 
     article.append(post_content);
 
